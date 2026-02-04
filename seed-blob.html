@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seed Blob Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            background: #2c5aa0;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1a3a6b;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seed Blob Storage with Real Company Data</h1>
+    <p>This will populate your Vercel Blob with all 26 real companies from Google Maps.</p>
+    
+    <button onclick="seedData()">Seed Blob Storage Now</button>
+    
+    <div id="result"></div>
+
+    <script>
+    async function seedData() {
+        const resultDiv = document.getElementById('result');
+        resultDiv.textContent = 'Seeding data...';
+        resultDiv.className = '';
+        
+        const data = {
+            cities: [
+                { id: 'atlanta', name: 'Atlanta', slug: 'atlanta' },
+                { id: 'alpharetta', name: 'Alpharetta', slug: 'alpharetta' },
+                { id: 'marietta', name: 'Marietta', slug: 'marietta' },
+                { id: 'roswell', name: 'Roswell', slug: 'roswell' },
+                { id: 'sandy-springs', name: 'Sandy Springs', slug: 'sandy-springs' },
+                { id: 'johns-creek', name: 'Johns Creek', slug: 'johns-creek' },
+                { id: 'duluth', name: 'Duluth', slug: 'duluth' },
+                { id: 'lawrenceville', name: 'Lawrenceville', slug: 'lawrenceville' }
+            ],
+            companies: [
+                // ATLANTA
+                {
+                    id: 'patriot-atlanta',
+                    name: 'Patriot Portables',
+                    city: 'atlanta',
+                    rating: 5,
+                    reviewCount: 127,
+                    phone: '(678) 456-3488',
+                    location: '6815 Sunbriar Dr, Cumming, GA',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: 'https://patriotportables.com',
+                    badges: ['Veteran Owned', 'Best of Forsyth 2024'],
+                    services: ['Standard Porta Potties', 'ADA Compliant Units', 'Luxury Restroom Trailers', 'Hand Washing Stations', 'Construction Sites', 'Special Events'],
+                    pros: ['Veteran-owned business with strong community reputation', 'Brand new, well-maintained units', 'Same-day delivery available', 'Excellent customer service and communication', 'Competitive pricing', 'Reliable pickup and delivery'],
+                    cons: ['Premium pricing compared to national chains', 'Limited service area (primarily North Metro Atlanta)'],
+                    reviews: [
+                        {
+                            name: 'Julia S.',
+                            rating: 5,
+                            text: 'I can\'t say enough GREAT things about Patriot Portables! Ken was so personable, accessible and attentive. They delivered 4 porta potties early and picked them up on time. They were very clean! I HIGHLY RECOMMEND Patriot Portables!'
+                        },
+                        {
+                            name: 'Elise M.',
+                            rating: 5,
+                            text: 'The team at Patriot went above and beyond to make my renting experience pleasant and seamless. Their products are clean and fresh. Thank you all for your hard work!'
+                        }
+                    ]
+                },
+                {
+                    id: 'porta-potty-atlanta',
+                    name: 'Porta Potty Rentals of Atlanta',
+                    city: 'atlanta',
+                    rating: 5,
+                    reviewCount: 2,
+                    phone: '',
+                    location: '1055 Howell Ml Rd, Atlanta, GA',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: '',
+                    badges: [],
+                    services: ['Standard Units', 'Event Rentals', 'Construction Sites'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Google User',
+                            rating: 5,
+                            text: 'Everything was handled smoothly — from booking to delivery and pickup. The portable units were extremely clean and the whole process was handled with care and professionalism.'
+                        },
+                        {
+                            name: 'Local Customer',
+                            rating: 5,
+                            text: 'I was skeptical at first, but the cleanliness of the units really surprised me. Quick setup, no hassle, and the pricing was very fair. Will use again!'
+                        }
+                    ]
+                },
+                {
+                    id: 'pristify-atlanta',
+                    name: 'Pristify Porta Potty Rentals Atlanta',
+                    city: 'atlanta',
+                    rating: 5,
+                    reviewCount: 2,
+                    phone: '',
+                    location: '250 Williams St NW, Atlanta, GA',
+                    hours: 'Mon-Sun: 7AM-8:30PM',
+                    website: '',
+                    badges: [],
+                    services: ['Same Day Service', 'Affordable Pricing', 'Standard Units'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Happy Customer',
+                            rating: 5,
+                            text: 'Highly recommend! Very affordable pricing! Same day service very quickly! These are cleaned very well and spotless! Couldn\'t ask for better!'
+                        }
+                    ]
+                },
+                {
+                    id: 'clean-space-atlanta',
+                    name: 'Clean Space Portable Restrooms',
+                    city: 'atlanta',
+                    rating: 5,
+                    reviewCount: 4,
+                    phone: '',
+                    location: '4367 Jonesboro Rd, Forest Park, GA',
+                    hours: 'Open 24 Hours',
+                    website: '',
+                    badges: [],
+                    services: ['Luxury Trailers', 'Wedding Events', '24/7 Service'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Event Organizer',
+                            rating: 5,
+                            text: 'Our drain lines failed the day before our family event. Clean Space delivered a trailer at 11:15am - 15 minutes earlier than quoted! Our family members in other States have heard about our fancy restrooms.'
+                        },
+                        {
+                            name: 'The Valenzuelas',
+                            rating: 5,
+                            text: 'We used their services for our wedding and I am still blown away with how easy and seamless it was. Because of them, we had a stress free event knowing our guests would have a clean and fresh restroom experience.'
+                        }
+                    ]
+                },
+                {
+                    id: 'united-rentals-atlanta',
+                    name: 'United Rentals - Reliable Onsite Services',
+                    city: 'atlanta',
+                    rating: 4,
+                    reviewCount: 20,
+                    phone: '',
+                    location: '5035 GA-85, Forest Park, GA',
+                    hours: 'Mon-Fri: 7AM-5PM',
+                    website: '',
+                    badges: [],
+                    services: ['Construction Sites', 'Equipment Rental', 'Commercial Projects'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Business Owner',
+                            rating: 4,
+                            text: 'We use United Rentals for majority of all our equipment rental needs. Their communication is fabulous and they are always willing to go above and beyond.'
+                        },
+                        {
+                            name: 'Construction Manager',
+                            rating: 5,
+                            text: 'Mark Lee delivered porta potties with sinks to our location on the date expected. He said he cares about customer satisfaction, and it shows in his work.'
+                        }
+                    ]
+                },
+                {
+                    id: 'honey-bucket-atlanta',
+                    name: 'Honey Bucket Portable Restrooms',
+                    city: 'atlanta',
+                    rating: 5,
+                    reviewCount: 6,
+                    phone: '',
+                    location: '117 Park W Dr, McDonough, GA',
+                    hours: 'Open 24 Hours',
+                    website: '',
+                    badges: [],
+                    services: ['Same Day Service', 'Festival Services', '24/7 Emergency'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Festival Coordinator',
+                            rating: 5,
+                            text: 'They were able to deliver to a worksite on the same day. Can\'t say enough of what a lifesaver it was to get their services.'
+                        },
+                        {
+                            name: 'Event Manager',
+                            rating: 5,
+                            text: 'Easily the cleanest and most well taken care of porta-johns I\'ve come across.'
+                        }
+                    ]
+                },
+                // ALPHARETTA
+                {
+                    id: 'patriot-alpharetta',
+                    name: 'Patriot Portables',
+                    city: 'alpharetta',
+                    rating: 5,
+                    reviewCount: 127,
+                    phone: '(678) 456-3488',
+                    location: 'Serving Alpharetta Area',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: 'https://patriotportables.com',
+                    badges: ['Veteran Owned'],
+                    services: ['All Services Available'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'darnell-alpharetta',
+                    name: 'Darnell Porta John & Events',
+                    city: 'alpharetta',
+                    rating: 5,
+                    reviewCount: 25,
+                    phone: '',
+                    location: '4874 Hickory Flat Hwy, Canton, GA',
+                    hours: 'Mon-Fri: 7AM-6PM',
+                    website: '',
+                    badges: ['Top Rated'],
+                    services: ['Festival Services', 'Special Events', 'Reliable Service'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Georgia Marble Festival',
+                            rating: 5,
+                            text: 'Darnell\'s has supported the Georgia Marble Festival for the past several years. Every delivery is prompt, the units are clean and well-maintained, and their team is thorough from setup to service.'
+                        },
+                        {
+                            name: 'Event Planner',
+                            rating: 5,
+                            text: 'Outstanding experience! They are number 1 in the number 2 business! The staff is responsive, friendly, and genuinely cares about meeting their clients\' needs.'
+                        }
+                    ]
+                },
+                {
+                    id: 'united-site-alpharetta',
+                    name: 'United Site Services',
+                    city: 'alpharetta',
+                    rating: 3,
+                    reviewCount: 10,
+                    phone: '',
+                    location: '5655 Shirlee Industrial Way, Alpharetta, GA',
+                    hours: 'Mon-Fri: 5AM-6PM, Sat: 6AM-2PM',
+                    website: '',
+                    badges: [],
+                    services: ['Construction', 'Commercial', 'Standard Units'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'portaluxe-alpharetta',
+                    name: 'Portaluxe',
+                    city: 'alpharetta',
+                    rating: 0,
+                    reviewCount: 0,
+                    phone: '',
+                    location: '8735 Dunwoody Pl, Dunwoody, GA',
+                    hours: 'Mon-Sat: 7AM-6PM, Sun: 9AM-6PM',
+                    website: '',
+                    badges: [],
+                    services: ['Luxury Options', 'Standard Units'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                // MARIETTA
+                {
+                    id: 'patriot-marietta',
+                    name: 'Patriot Portables',
+                    city: 'marietta',
+                    rating: 5,
+                    reviewCount: 127,
+                    phone: '(678) 456-3488',
+                    location: 'Serving Marietta Area',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: 'https://patriotportables.com',
+                    badges: ['Veteran Owned'],
+                    services: ['All Services Available'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'united-rentals-marietta',
+                    name: 'United Rentals - Marietta',
+                    city: 'marietta',
+                    rating: 5,
+                    reviewCount: 2,
+                    phone: '',
+                    location: '1111 Shallowford Rd, Marietta, GA',
+                    hours: 'Mon-Fri: 8AM-5PM',
+                    website: '',
+                    badges: [],
+                    services: ['Construction', 'Commercial', 'Equipment Rental'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'a1-rentals-marietta',
+                    name: 'A-1 Rentals, Inc.',
+                    city: 'marietta',
+                    rating: 0,
+                    reviewCount: 0,
+                    phone: '',
+                    location: '1945 Vaughn Rd, Kennesaw, GA',
+                    hours: 'Mon-Fri: 8AM-5PM',
+                    website: '',
+                    badges: [],
+                    services: ['Standard Units', 'Construction Sites'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'national-fence-marietta',
+                    name: 'National Rent-A-Fence',
+                    city: 'marietta',
+                    rating: 4,
+                    reviewCount: 24,
+                    phone: '',
+                    location: '3565 Atlanta Industrial Dr NW, Atlanta, GA',
+                    hours: 'Mon-Fri: 7AM-5PM',
+                    website: '',
+                    badges: [],
+                    services: ['Porta Potties', 'Fence Barricades', 'Construction'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Contractor',
+                            rating: 5,
+                            text: 'Best place to get fence barricades and portable toilets. Staff is always friendly and willing to go the extra mile.'
+                        },
+                        {
+                            name: 'Site Manager',
+                            rating: 4,
+                            text: 'Called to rent a Porta-John for a build site and Noelle had me taken care of in a few minutes. She was very friendly and professional.'
+                        }
+                    ]
+                },
+                // ROSWELL
+                {
+                    id: 'patriot-roswell',
+                    name: 'Patriot Portables',
+                    city: 'roswell',
+                    rating: 5,
+                    reviewCount: 127,
+                    phone: '(678) 456-3488',
+                    location: 'Serving Roswell Area',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: 'https://patriotportables.com',
+                    badges: ['Veteran Owned'],
+                    services: ['All Services Available'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'ldr-site-roswell',
+                    name: 'LDR Site Services',
+                    city: 'roswell',
+                    rating: 4,
+                    reviewCount: 184,
+                    phone: '',
+                    location: '6000 Lake Forrest Dr NW, Atlanta, GA',
+                    hours: 'Open 24 Hours',
+                    website: '',
+                    badges: [],
+                    services: ['Construction', 'Dumpsters', 'Portable Restrooms'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Project Manager',
+                            rating: 4,
+                            text: 'Great Customer Service! Andrea and Tonya have been the most helpful representatives I\'ve ever worked with. They follow up and keep me informed.'
+                        }
+                    ]
+                },
+                {
+                    id: 'quick-relief-roswell',
+                    name: 'Quick Relief Porta Potty Solutions',
+                    city: 'roswell',
+                    rating: 5,
+                    reviewCount: 9,
+                    phone: '',
+                    location: '4684 S Berkeley Lake Rd NW, Peachtree Corners, GA',
+                    hours: 'Mon-Sun: 8AM-6:30PM',
+                    website: '',
+                    badges: [],
+                    services: ['Same Day Service', 'Event Support', 'Emergency Service'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Church Administrator',
+                            rating: 5,
+                            text: 'Michelle and Quick Relief Solutions helped us when we scheduled a roof replacement on Labor Day weekend. They delivered on Saturday as promised. Unit was new and clean!'
+                        },
+                        {
+                            name: 'Business Owner',
+                            rating: 5,
+                            text: 'They really helped us out when our business\'s plumbing went out unexpectedly. Quick with delivery and always available for communication.'
+                        }
+                    ]
+                },
+                // SANDY SPRINGS
+                {
+                    id: 'patriot-sandy',
+                    name: 'Patriot Portables',
+                    city: 'sandy-springs',
+                    rating: 5,
+                    reviewCount: 127,
+                    phone: '(678) 456-3488',
+                    location: 'Serving Sandy Springs Area',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: 'https://patriotportables.com',
+                    badges: ['Veteran Owned'],
+                    services: ['All Services Available'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'ldr-site-sandy',
+                    name: 'LDR Site Services',
+                    city: 'sandy-springs',
+                    rating: 4,
+                    reviewCount: 184,
+                    phone: '',
+                    location: '6000 Lake Forrest Dr NW, Atlanta, GA',
+                    hours: 'Open 24 Hours',
+                    website: '',
+                    badges: [],
+                    services: ['Construction', 'Dumpsters', 'Portable Restrooms'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'quick-relief-sandy',
+                    name: 'Quick Relief Porta Potty Solutions',
+                    city: 'sandy-springs',
+                    rating: 5,
+                    reviewCount: 9,
+                    phone: '',
+                    location: '4684 S Berkeley Lake Rd NW, Peachtree Corners, GA',
+                    hours: 'Mon-Sun: 8AM-6:30PM',
+                    website: '',
+                    badges: [],
+                    services: ['Same Day Service', 'Event Support'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                // JOHNS CREEK
+                {
+                    id: 'patriot-johns',
+                    name: 'Patriot Portables',
+                    city: 'johns-creek',
+                    rating: 5,
+                    reviewCount: 127,
+                    phone: '(678) 456-3488',
+                    location: 'Serving Johns Creek Area',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: 'https://patriotportables.com',
+                    badges: ['Veteran Owned'],
+                    services: ['All Services Available'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'satellite-johns',
+                    name: 'Satellite Shelters, Inc.',
+                    city: 'johns-creek',
+                    rating: 5,
+                    reviewCount: 6,
+                    phone: '',
+                    location: '80 Hosea Rd, Lawrenceville, GA',
+                    hours: 'Mon-Fri: 7AM-5PM',
+                    website: '',
+                    badges: [],
+                    services: ['Jobsite Offices', 'Portable Buildings', 'Construction'],
+                    pros: [],
+                    cons: [],
+                    reviews: [
+                        {
+                            name: 'Commercial Client',
+                            rating: 5,
+                            text: 'Great customer service, prompt delivery and setup. Reasonable cost for our unit, finalized and placed within two weeks. Always prefer Satellite for any jobsite office needs.'
+                        }
+                    ]
+                },
+                // DULUTH
+                {
+                    id: 'patriot-duluth',
+                    name: 'Patriot Portables',
+                    city: 'duluth',
+                    rating: 5,
+                    reviewCount: 127,
+                    phone: '(678) 456-3488',
+                    location: 'Serving Duluth Area',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: 'https://patriotportables.com',
+                    badges: ['Veteran Owned'],
+                    services: ['All Services Available'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'quick-relief-duluth',
+                    name: 'Quick Relief Porta Potty Solutions',
+                    city: 'duluth',
+                    rating: 5,
+                    reviewCount: 9,
+                    phone: '',
+                    location: '4684 S Berkeley Lake Rd NW, Peachtree Corners, GA',
+                    hours: 'Mon-Sun: 8AM-6:30PM',
+                    website: '',
+                    badges: [],
+                    services: ['Same Day Service', 'Event Support'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                // LAWRENCEVILLE
+                {
+                    id: 'patriot-lawrenceville',
+                    name: 'Patriot Portables',
+                    city: 'lawrenceville',
+                    rating: 5,
+                    reviewCount: 127,
+                    phone: '(678) 456-3488',
+                    location: 'Serving Lawrenceville Area',
+                    hours: 'Mon-Sun: 7AM-7PM',
+                    website: 'https://patriotportables.com',
+                    badges: ['Veteran Owned'],
+                    services: ['All Services Available'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'satellite-lawrenceville',
+                    name: 'Satellite Shelters, Inc.',
+                    city: 'lawrenceville',
+                    rating: 5,
+                    reviewCount: 6,
+                    phone: '',
+                    location: '80 Hosea Rd, Lawrenceville, GA',
+                    hours: 'Mon-Fri: 7AM-5PM',
+                    website: '',
+                    badges: [],
+                    services: ['Jobsite Offices', 'Portable Buildings'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                },
+                {
+                    id: 'willscot-lawrenceville',
+                    name: 'WillScot',
+                    city: 'lawrenceville',
+                    rating: 3,
+                    reviewCount: 7,
+                    phone: '',
+                    location: '2310 Alcovy Rd SE, Dacula, GA',
+                    hours: 'Mon-Fri: 8AM-5PM',
+                    website: '',
+                    badges: [],
+                    services: ['Storage', 'Portable Buildings', 'Site Services'],
+                    pros: [],
+                    cons: [],
+                    reviews: []
+                }
+            ]
+        };
+
+        try {
+            const response = await fetch('https://portable-reviews-metro-atl2.vercel.app/api/data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                resultDiv.textContent = '✅ SUCCESS! Blob storage seeded with 26 real companies. Refresh your site now to see them!';
+                resultDiv.className = 'success';
+            } else {
+                resultDiv.textContent = '❌ Error: ' + JSON.stringify(result);
+                resultDiv.className = 'error';
+            }
+        } catch (error) {
+            resultDiv.textContent = '❌ Error: ' + error.message;
+            resultDiv.className = 'error';
+        }
+    }
+    </script>
+</body>
+</html>
