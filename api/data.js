@@ -1,4 +1,4 @@
-// Force Node.js runtime — @vercel/blob uses stream/net/http which Edge doesn't support
+// Force Node.js runtime — @vercel/blob uses strsfsfdeam/net/http which Edge doesn't support
 exports.config = { runtime: 'nodejs' };
 
 const { put, head } = require('@vercel/blob');
