@@ -2672,4 +2672,13 @@
 
             const searchInput = document.getElementById('searchInput');
             if (searchInput) {
-                searchInput.addEventListe
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchCompanies();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
