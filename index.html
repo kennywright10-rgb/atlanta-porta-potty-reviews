@@ -83,57 +83,6 @@
         }
 
         /* Search Bar */
-        .search-container {
-            max-width: 800px;
-            margin: -30px auto 0;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .search-box {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .search-inputs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .search-inputs input,
-        .search-inputs select {
-            flex: 1;
-            padding: 0.8rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .search-inputs input:focus,
-        .search-inputs select:focus {
-            outline: none;
-            border-color: #2c5aa0;
-        }
-
-        .search-btn {
-            background-color: #2c5aa0;
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .search-btn:hover {
-            background-color: #1a3a6b;
-        }
-
         /* Main Content */
         .container {
             max-width: 1200px;
@@ -895,18 +844,6 @@
         <p>Compare top-rated portable restroom companies in your area</p>
     </section>
 
-    <div class="search-container">
-        <div class="search-box">
-            <div class="search-inputs">
-                <input type="text" id="searchInput" placeholder="Search companies or services...">
-                <select id="cityFilter">
-                    <option value="">All Cities</option>
-                </select>
-            </div>
-            <button class="search-btn" onclick="performSearch()">Search</button>
-        </div>
-    </div>
-
     <div class="container">
         <!-- Cities Grid -->
         <section id="cities" class="cities-section">
@@ -942,7 +879,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Atlanta Metro Porta Potty Reviews<br>(678) 456-3488<br><a href="mailto:info@atlmetropp.com">info@atlmetropp.com</a></p>
+                <p>Atlanta Metro Porta Potty Reviews<br>(678) 456-3488<br><a href="/cdn-cgi/l/email-protection#f0999e969fb091849c9d9584829f8080de939f9d"><span class="__cf_email__" data-cfemail="1e777078715e7f6a72737b6a6c716e6e307d7173">[email&#160;protected]</span></a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1022,7 +959,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Data will be stored in API endpoint with Vercel Blob
         let currentData = {
             cities: [],
@@ -2097,24 +2034,6 @@
         }
 
         // Search functionality
-        function performSearch() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const cityFilter = document.getElementById('cityFilter').value;
-            
-            if (cityFilter) {
-                showCity(cityFilter);
-            } else if (searchTerm) {
-                // Simple search - show first city with matching companies
-                const matchingCompany = currentData.companies.find(c => 
-                    c.name.toLowerCase().includes(searchTerm) || 
-                    c.services.some(s => s.toLowerCase().includes(searchTerm))
-                );
-                if (matchingCompany) {
-                    showCity(matchingCompany.city);
-                }
-            }
-        }
-
         // Populate footer cities
         function populateFooterCities() {
             const footer = document.getElementById('footerCities');
@@ -2125,21 +2044,16 @@
 
         // Populate city filters
         function populateCityFilters() {
-            const filters = [
-                document.getElementById('cityFilter'),
-                document.getElementById('adminCityFilter')
-            ];
+            const adminFilter = document.getElementById('adminCityFilter');
             
-            filters.forEach(filter => {
-                if (filter) {
-                    const currentValue = filter.value;
-                    filter.innerHTML = '<option value="">All Cities</option>' + 
-                        currentData.cities.map(city => 
-                            `<option value="${city.id}">${city.name}</option>`
-                        ).join('');
-                    filter.value = currentValue;
-                }
-            });
+            if (adminFilter) {
+                const currentValue = adminFilter.value;
+                adminFilter.innerHTML = '<option value="">All Cities</option>' + 
+                    currentData.cities.map(city => 
+                        `<option value="${city.id}">${city.name}</option>`
+                    ).join('');
+                adminFilter.value = currentValue;
+            }
         }
 
         // Admin functions
@@ -2665,19 +2579,9 @@
             }, 5000);
         }
 
-        // Allow Enter key to search & boot the site
+        // Boot the site on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Boot the site — renders cities, companies, footer
             initSite();
-
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        searchCompanies();
-                    }
-                });
-            }
         });
     </script>
 </body>
